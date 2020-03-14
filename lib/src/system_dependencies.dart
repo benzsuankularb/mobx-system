@@ -14,7 +14,7 @@ class Dependencies {
   }
 
   T get<T>({String key}) {
-    var value = _getIt.get<T>(key);
+    var value = _getIt.get<T>(instanceName: key);
     assert(
       value != null,
       _getNoDependencyMessage(T.runtimeType, key: key),
