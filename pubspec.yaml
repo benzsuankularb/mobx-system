@@ -1,0 +1,12 @@
+name: mobx_system
+version: 0.0.0
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  mobx: ^0.4.0+1
+  get_it: ^3.1.0
+  provider: ^3.1.0+1
+  flutter:
+    sdk: flutter
