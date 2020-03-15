@@ -11,22 +11,17 @@ ReactionDisposer listen<T>(
 
 class ObservableEvent<T> extends ObservableStream<T> {
   StreamController<T> _controller;
+  Stream<T> get stream => _controller.stream;
+  StreamSink<T> get sink => _controller.sink;
 
   factory ObservableEvent() {
-    final _controller = StreamController<T>();
-    // HACK: This added to avoid lint warning
-    final _ = () => _controller.close();
-    return ObservableEvent._(
-      _controller,
-      _controller.stream.asBroadcastStream(),
-    );
+    return ObservableEvent._(StreamController<T>.broadcast());
   }
 
   ObservableEvent._(
     StreamController<T> controller,
-    Stream<T> stream,
   )   : _controller = controller,
-        super(stream);
+        super(controller.stream);
 
   void call([T value]) {
     return _controller.sink.add(value);
