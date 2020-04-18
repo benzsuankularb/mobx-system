@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:mobx/mobx.dart';
 
+@deprecated
 ReactionDisposer listen<T>(
   ObservableEvent<T> event,
   void Function(T value) effect,

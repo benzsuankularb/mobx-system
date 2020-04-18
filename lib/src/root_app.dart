@@ -45,9 +45,14 @@ class _RootAppState extends State<RootApp> {
   }
 
   void createCrossDependencies() {
-    final inject = <T>(T value) {
-      addCrossDependency<T>(value);
-    };
+    void inject<T>(T value) {
+      if (value is CorssDependenciesInjector) {
+        value.injectDependencies(inject);
+      } else {
+        addCrossDependency<T>(value);
+      }
+    }
+
     widget.injector.injectDependencies(inject);
   }
 
