@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mobx_system/mobx_system.dart';
 import 'package:provider/provider.dart';
+import 'package:mobx_system/src/system/system.dart';
 
 typedef System SystemBuilder();
 typedef Widget WidgetBuilder();
-typedef Map<String, dynamic> ArgsBuilder();
 
 abstract class CorssDependenciesInjector {
   injectDependencies(void Function<T>(T value) inject);
 }
 
 class RootApp extends StatefulWidget {
-  final ArgsBuilder args;
   final SystemBuilder system;
   final WidgetBuilder app;
   final CorssDependenciesInjector injector;
@@ -20,7 +18,6 @@ class RootApp extends StatefulWidget {
     @required this.app,
     @required this.system,
     @required this.injector,
-    this.args,
   });
 
   @override
@@ -39,7 +36,6 @@ class _RootAppState extends State<RootApp> {
     systemContext = SystemContext(
       widget.system(),
       dependencies: dependencies,
-      args: widget.args?.call() ?? {},
     );
     systemContext.start();
   }

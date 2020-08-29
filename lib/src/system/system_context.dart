@@ -15,8 +15,8 @@ class SystemContext {
 
   void start() async {
     system._setContext(this);
-    await system._createDependencies(dependencies);
-    await system._loadDependencies(dependencies);
+    await system._createDependencies();
+    await system._loadDependencies();
     await system._setUp();
     await system._start();
   }

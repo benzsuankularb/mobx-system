@@ -1,9 +1,9 @@
 part of 'system.dart';
 
-class MultiSystems extends Feature {
+class AggregateSystem extends Feature {
   final List<System> systems;
 
-  MultiSystems(this.systems);
+  AggregateSystem(this.systems);
 
   @override
   List<System> createSystems() {
@@ -27,21 +27,21 @@ abstract class Feature extends System {
   }
 
   @override
-  _createDependencies(Dependencies dependencies) async {
-    await super._createDependencies(dependencies);
-    if (filter(_context.args)) {
+  _createDependencies() async {
+    await super._createDependencies();
+    if (filterCreateDependencies()) {
       for (var system in systems) {
-        await system._createDependencies(dependencies);
+        await system._createDependencies();
       }
     }
   }
 
   @override
-  _loadDependencies(Dependencies dependencies) async {
-    await super._loadDependencies(dependencies);
-    if (filter(_context.args)) {
+  _loadDependencies() async {
+    await super._loadDependencies();
+    if (filter()) {
       for (var system in systems) {
-        await system._loadDependencies(dependencies);
+        await system._loadDependencies();
       }
     }
   }
@@ -49,7 +49,7 @@ abstract class Feature extends System {
   @override
   _setUp() async {
     await super._setUp();
-    if (filter(_context.args)) {
+    if (filter()) {
       for (var system in systems) {
         await system._setUp();
       }
@@ -59,7 +59,7 @@ abstract class Feature extends System {
   @override
   void _start() async {
     await super._start();
-    if (filter(_context.args)) {
+    if (filter()) {
       for (var system in systems) {
         await system._start();
       }
@@ -69,7 +69,7 @@ abstract class Feature extends System {
   @override
   void _dispose() async {
     await super._dispose();
-    if (filter(_context.args)) {
+    if (filter()) {
       for (var system in systems) {
         await system._dispose();
       }
