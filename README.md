@@ -4,12 +4,10 @@ Language: [English](README.md) | [Português](translation/pt-BR/README.md) | [Ch
 
 > Solid reactive style state-management build on mobx.dart
 
-- **[Installation](#installation)**
-- **[Examples](#examples)**
+- **[Get Started](#get-started)**
+- **[Core Systems](#core-systems)**
 
-## Installation
-
-## Examples
+## Get Started
 
 1. Crate a store and generate using `mobx_codegen`, See `mobx.dart` for more example.
 
@@ -84,4 +82,6 @@ class YourApp extends StatelessWidget {
 }
 ```
 
-4. Run it.
+4. Run the app.
+
+## Core Systems
