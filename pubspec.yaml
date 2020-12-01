@@ -1,13 +1,19 @@
 name: mobx_system
-version: 0.0.2
+version: 1.0.0
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  provider: ^4.0.4
-  get_it: ^4.0.0
-  mobx: ^0.4.0+4
-  flutter_mobx: ^0.3.3
   flutter:
     sdk: flutter
+  mobx: ^1.2.1+4
+  flutter_mobx: ^1.1.0+2
+  meta: ^1.2.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  test: any
+  build_runner: ^1.10.6
+  mobx_codegen: ^1.1.2
