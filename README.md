@@ -19,14 +19,11 @@ abstract class _YourStoreBase with Store {
   ObservableEvent onCount = ObservableEvent();
 
   @observable
-  int counter = 0;
-
-  @observable
-  int multiplyCounter = 0;
+  int count = 0;
 
   @action
   void increaseCount() {
-    counter++;
+    count++;
   }
 }
 ```
@@ -39,13 +36,21 @@ class CounterSystem extends StoreReactiveSystem<AppStore, int> {
 
   CounterSystem(this.context) : super(context);
 
+  // 1. Get the variable we want to react to changes inside the AppStore
   @override
   int trigger(AppStore store) {
-    return store.counter;
+    return store.count;
   }
 
+  // 2. Filter out if we don't want to react in the execute()
   @override
-  void execute(int counter) {
+  bool filter(int count) {
+    return count > 0;
+  }
+
+  // 3. Do something after count value changed.
+  @override
+  void execute(int count) {
     final appStore = context.get<AppStore>();
     appStore.multiplyCounter += counter * 2;
   }
@@ -85,3 +90,11 @@ class YourApp extends StatelessWidget {
 4. Run the app.
 
 ## Core Systems
+
+- _StoreReactiveSystem<TStore, TValue>_ - React to value changes inside the store.
+- _EventReactiveSystem<TStore>_ - React to `ObservableEvent` trigger inside the store.
+- _EventValueReactiveSystem<TStore, TValue>_ - Same as `EventReactiveSystem` but with value.
+- _SetupSystem_ - Execute at the begining of the app.
+- _StartSystem_ - Execute after setup.
+- _TeardownSystem_ - Execute at the end of the app life time.
+- _Systems_ - Compose of multiple system. You can nested `Systems` inside a `Systems`.
