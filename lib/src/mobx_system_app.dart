@@ -53,7 +53,9 @@ class _MobxSystemAppState extends State<MobxSystemApp> {
   @override
   void dispose() {
     super.dispose();
-    systems.teardown();
-    systems.deactivateReactive();
+    () async {
+      await systems.teardown();
+      systems.deactivateReactive();
+    }();
   }
 }

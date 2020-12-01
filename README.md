@@ -1,5 +1,3 @@
-Language: [English](README.md) | [Português](translation/pt-BR/README.md) | [Chinese](translation/zh-CN/README.md)
-
 # mobx_system
 
 > Solid reactive style state-management build on mobx.dart
