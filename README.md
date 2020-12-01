@@ -91,10 +91,10 @@ class YourApp extends StatelessWidget {
 
 ## Core Systems
 
-- _StoreReactiveSystem<TStore, TValue>_ - React to value changes inside the store.
-- _EventReactiveSystem<TStore>_ - React to `ObservableEvent` trigger inside the store.
-- _EventValueReactiveSystem<TStore, TValue>_ - Same as `EventReactiveSystem` but with value.
-- _SetupSystem_ - Execute at the begining of the app.
-- _StartSystem_ - Execute after setup.
-- _TeardownSystem_ - Execute at the end of the app life time.
-- _Systems_ - Compose of multiple system. You can nested `Systems` inside a `Systems`.
+- **StoreReactiveSystem<TStore, TValue>** - React to value changes inside the store.
+- **EventReactiveSystem<TStore>** - React to `ObservableEvent` trigger inside the store.
+- **EventValueReactiveSystem<TStore, TValue>** - Same as `EventReactiveSystem` but with value.
+- **SetupSystem** - Execute at the begining of the app.
+- **StartSystem** - Execute after setup.
+- **TeardownSystem** - Execute at the end of the app life time.
+- **Systems** - Compose of multiple system. You can nested `Systems` inside a `Systems`.
